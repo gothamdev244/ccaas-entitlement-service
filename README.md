@@ -1,6 +1,6 @@
 # Entitlement Service
 
-High-performance data access service for the Sterling Platform 3-layer entitlement architecture.
+High-performance data access service for the CCAAS Platform 3-layer entitlement architecture.
 
 ## Overview
 
@@ -76,9 +76,9 @@ The Entitlement Service provides optimized database operations for the 3-layer e
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/sterling_platform
-    username: sterling_user
-    password: sterling_password
+    url: jdbc:postgresql://localhost:5432/ccaas_platform
+    username: ccaas_user
+    password: ccaas_password
     hikari:
       minimum-idle: 10
       maximum-pool-size: 50
@@ -104,10 +104,10 @@ entitlement:
 ### Development
 ```bash
 # Start PostgreSQL (using Docker)
-docker run -d --name sterling-postgres -p 5434:5432 \
-  -e POSTGRES_DB=sterling_platform \
-  -e POSTGRES_USER=sterling_user \
-  -e POSTGRES_PASSWORD=sterling_password \
+docker run -d --name ccaas-postgres -p 5434:5432 \
+  -e POSTGRES_DB=ccaas_platform \
+  -e POSTGRES_USER=ccaas_user \
+  -e POSTGRES_PASSWORD=ccaas_password \
   postgres:14
 
 # Run the service
@@ -147,4 +147,4 @@ Once running, the service provides:
 
 ## License
 
-Part of the Sterling Platform - Internal Use Only
+Part of the CCAAS Platform - Internal Use Only

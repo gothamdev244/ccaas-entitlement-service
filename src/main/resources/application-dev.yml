@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5434/sterling_platform
-    username: sterling_user
-    password: sterling_password
+    url: jdbc:postgresql://localhost:5434/ccaas_platform
+    username: ccaas_user
+    password: ccaas_password
   
   jpa:
     hibernate:
@@ -14,7 +14,7 @@ spring:
 
 logging:
   level:
-    com.sterling.entitlement: DEBUG
+    com.ccaas.entitlement: DEBUG
     org.springframework.cache: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE

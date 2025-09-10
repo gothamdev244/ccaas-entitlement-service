@@ -12,11 +12,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.sterling</groupId>
+    <groupId>com.ccaas</groupId>
     <artifactId>entitlement-service</artifactId>
     <version>1.0.0</version>
     <name>entitlement-service</name>
-    <description>Entitlement Service for Sterling Platform - 3-Layer Architecture Data Access</description>
+    <description>Entitlement Service for CCAAS Platform - 3-Layer Architecture Data Access</description>
 
     <properties>
         <java.version>21</java.version>

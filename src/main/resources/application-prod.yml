@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/sterling_platform}
-    username: ${DATABASE_USERNAME:sterling_user}
-    password: ${DATABASE_PASSWORD:sterling_password}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/ccaas_platform}
+    username: ${DATABASE_USERNAME:ccaas_user}
+    password: ${DATABASE_PASSWORD:ccaas_password}
   
   jpa:
     show-sql: false
@@ -12,7 +12,7 @@ spring:
 
 logging:
   level:
-    com.sterling.entitlement: INFO
+    com.ccaas.entitlement: INFO
     org.springframework.cache: WARN
     org.hibernate.SQL: WARN
     root: WARN
