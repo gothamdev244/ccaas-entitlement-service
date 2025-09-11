@@ -14,6 +14,7 @@
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/entity/AdGroupLayoutOverride.java
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/config/SecurityConfig.java
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/repository/UserPreferenceCacheRepository.java
+/Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/config/OpenApiConfig.java
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/controller/LayoutController.java
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/entity/UserLayoutPreferences.java
 /Users/adarshpandey/sterling-platform/services/ccaas-entitlement-computation-service/src/main/java/com/ccaas/entitlement/entity/LayoutComputationAudit.java

@@ -6,6 +6,7 @@ com/ccaas/entitlement/repository/UserPreferenceCacheRepository.class
 com/ccaas/entitlement/entity/AdGroupLayoutOverride.class
 com/ccaas/entitlement/controller/RoleTemplateController$2.class
 com/ccaas/entitlement/repository/RoleLayoutTemplateRepository.class
+com/ccaas/entitlement/config/OpenApiConfig.class
 com/ccaas/entitlement/controller/AuditController$5.class
 com/ccaas/entitlement/controller/UserPreferenceController.class
 com/ccaas/entitlement/controller/RoleTemplateController.class
