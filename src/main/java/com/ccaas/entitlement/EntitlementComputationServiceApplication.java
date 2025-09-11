@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * Main Spring Boot application for the Entitlement Service.
+ * Main Spring Boot application for the CCAAS Entitlement Computation Service.
  * 
- * This service provides high-performance data access for the 3-layer entitlement architecture:
- * - Layer 1: Role Layout Templates
- * - Layer 2: AD Group Granular Overrides  
- * - Layer 3: User Preference Cache
+ * This service provides high-performance data access for entitlement computation:
+ * - Role Layout Templates
+ * - AD Group Granular Overrides  
+ * - User Preference Cache
+ * - Layout Computation Engine
  * 
  * Features:
  * - Java 21 with Virtual Threads
@@ -24,9 +25,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableJpaRepositories
 @EnableCaching
 @EnableScheduling
-public class EntitlementServiceApplication {
+public class EntitlementComputationServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EntitlementServiceApplication.class, args);
+        SpringApplication.run(EntitlementComputationServiceApplication.class, args);
     }
 }

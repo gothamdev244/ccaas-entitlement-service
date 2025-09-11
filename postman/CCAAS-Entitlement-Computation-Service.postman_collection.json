@@ -1,0 +1,184 @@
+{
+  "info": {
+    "name": "CCAAS Entitlement Computation Service",
+    "description": "Postman collection for CCAAS Entitlement Computation Service (SAPI) - Data Access Layer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Layout Computation",
+      "item": [
+        {
+          "name": "Compute Internal Layout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"12345\",\n  \"adGroups\": [\"CN=EMEA-Senior-Managers,OU=Groups,DC=hsbc,DC=com\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/layout/compute-internal",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "layout", "compute-internal"]
+            },
+            "description": "Internal endpoint for layout computation called by PAPI service"
+          },
+          "response": [
+            {
+              "name": "Successful Internal Layout Computation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"12345\",\n  \"adGroups\": [\"CN=EMEA-Senior-Managers,OU=Groups,DC=hsbc,DC=com\"]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/layout/compute-internal",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "layout", "compute-internal"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"layout\": {\n    \"userComputedLayout\": \"{\\\"layout\\\": {\\\"sidebar\\\": {\\\"collapsed\\\": false}, \\\"dashboard\\\": {\\\"widgets\\\": [\\\"call-summary\\\", \\\"agent-performance\\\"]}}}\",\n    \"availableWidgets\": \"{\\\"widgets\\\": [\\\"call-summary\\\", \\\"agent-performance\\\", \\\"queue-status\\\", \\\"reports\\\"]}\",\n    \"userMarketTheme\": \"{\\\"theme\\\": \\\"emea-corporate\\\", \\\"colors\\\": {\\\"primary\\\": \\\"#1e3a8a\\\", \\\"secondary\\\": \\\"#059669\\\"}}\",\n    \"userEffectivePermissions\": \"{\\\"permissions\\\": [\\\"view-reports\\\", \\\"manage-agents\\\", \\\"configure-queues\\\", \\\"admin-settings\\\"]}\",\n    \"defaultColumns\": \"{\\\"columns\\\": [{\\\"id\\\": \\\"dashboard\\\", \\\"width\\\": 6}, {\\\"id\\\": \\\"reports\\\", \\\"width\\\": 6}]}\",\n    \"defaultTheme\": \"{\\\"logo\\\": \\\"hsbc-logo\\\", \\\"theme\\\": \\\"corporate-blue\\\"}\",\n    \"defaultActions\": \"{\\\"actions\\\": [\\\"view-reports\\\", \\\"manage-agents\\\", \\\"configure-queues\\\"]}\",\n    \"settingsAccess\": \"{\\\"access\\\": [\\\"admin-settings\\\", \\\"user-management\\\", \\\"system-config\\\"]}\"\n  },\n  \"theme\": {\n    \"primaryColor\": \"#1e3a8a\",\n    \"secondaryColor\": \"#059669\"\n  },\n  \"market\": \"EMEA\",\n  \"computationTimeMs\": 30\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test Data Management",
+      "item": [
+        {
+          "name": "Insert Test Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/test-data/insert",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "test-data", "insert"]
+            },
+            "description": "Insert sample test data for development and testing"
+          },
+          "response": [
+            {
+              "name": "Test Data Inserted Successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/test-data/insert",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "test-data", "insert"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Test data inserted successfully\",\n  \"roleTemplates\": 1,\n  \"adGroupOverrides\": 1,\n  \"userPreferences\": 1\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/actuator/health",
+              "host": ["{{base_url}}"],
+              "path": ["actuator", "health"]
+            },
+            "description": "Check service health status"
+          },
+          "response": [
+            {
+              "name": "Healthy Service",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/actuator/health",
+                  "host": ["{{base_url}}"],
+                  "path": ["actuator", "health"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.spring-boot.actuator.v3+json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"status\": \"UP\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8093/entitlement",
+      "description": "Base URL for the CCAAS Entitlement Computation Service"
+    }
+  ]
+}

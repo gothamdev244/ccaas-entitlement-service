@@ -13,10 +13,10 @@
     </parent>
 
     <groupId>com.ccaas</groupId>
-    <artifactId>entitlement-service</artifactId>
+    <artifactId>ccaas-entitlement-computation-service</artifactId>
     <version>1.0.0</version>
-    <name>entitlement-service</name>
-    <description>Entitlement Service for CCAAS Platform - 3-Layer Architecture Data Access</description>
+    <name>ccaas-entitlement-computation-service</name>
+    <description>CCAAS Entitlement Computation Service - Data Access Layer for Layout Computation</description>
 
     <properties>
         <java.version>21</java.version>

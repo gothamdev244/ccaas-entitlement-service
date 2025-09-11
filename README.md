@@ -1,10 +1,10 @@
-# Entitlement Service
+# Entitlement Service SAPI
 
 High-performance data access service for the CCAAS Platform 3-layer entitlement architecture.
 
 ## Overview
 
-The Entitlement Service provides optimized database operations for the 3-layer entitlement system:
+The Entitlement Service SAPI provides optimized database operations for the 3-layer entitlement system:
 
 - **Layer 1**: Role Layout Templates - Base UI layouts per role
 - **Layer 2**: AD Group Granular Overrides - Market-specific customizations based on AD groups
