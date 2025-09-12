@@ -62,16 +62,19 @@ public class LayoutComputationService {
                 }
             }
 
-            // Step 4: Compute final layout
+            // Step 4: Extract market from AD groups
+            String market = extractMarketFromAdGroups(request.getAdGroups());
+
+            // Step 5: Compute final layout
             Map<String, Object> computedLayout = computeFinalLayout(
                 userPreferences, adGroupOverrides, roleTemplates);
 
-            // Step 5: Build response
+            // Step 6: Build response
             LayoutComputationResponse response = new LayoutComputationResponse();
             response.setUserId(request.getUserId());
             response.setLayout(computedLayout);
-            response.setTheme(Map.of("primaryColor", "#1e3a8a", "secondaryColor", "#059669"));
-            response.setMarket("EMEA");
+            // UI handles market badge styling via useMarketIndicator hook
+            response.setMarket(market);
             response.setComputationSource("sapi");
             response.setComputationTimeMs(System.currentTimeMillis() - startTime);
             response.setTimestamp(LocalDateTime.now());
@@ -143,6 +146,75 @@ public class LayoutComputationService {
             }
         }
 
+        return layout;
+    }
+
+    /**
+     * Extract market from AD groups
+     */
+    private String extractMarketFromAdGroups(List<String> adGroups) {
+        for (String adGroup : adGroups) {
+            if (adGroup.contains("EMEA")) {
+                return "EMEA";
+            } else if (adGroup.contains("UK")) {
+                return "UK";
+            } else if (adGroup.contains("US")) {
+                return "US";
+            } else if (adGroup.contains("APAC")) {
+                return "APAC";
+            }
+        }
+        return "GLOBAL";
+    }
+
+
+    /**
+     * Build structured layout with columns, widgets, and permissions
+     */
+    private Map<String, Object> buildStructuredLayout(List<String> roles, String market) {
+        Map<String, Object> layout = new HashMap<>();
+        
+        // Define column visibility based on roles
+        Map<String, Object> columns = new HashMap<>();
+        columns.put("customer", Map.of("visible", true, "size", 300));
+        columns.put("transcript", Map.of("visible", true, "size", 400));
+        
+        // Embedded apps visibility depends on role
+        boolean canViewEmbedded = roles.stream().anyMatch(role -> 
+            role.contains("senior") || role.contains("supervisor") || role.contains("manager"));
+        columns.put("embedded", Map.of("visible", canViewEmbedded, "size", 300));
+        
+        layout.put("columns", columns);
+        
+        // Define widget configurations
+        Map<String, Object> widgets = new HashMap<>();
+        widgets.put("sentiment_widget", Map.of("visible", true, "editable", false));
+        widgets.put("priority_widget", Map.of("visible", roles.contains("supervisor"), "editable", false));
+        layout.put("widgets", widgets);
+        
+        // Define data access permissions
+        Map<String, Object> dataAccess = new HashMap<>();
+        Map<String, Object> customerData = new HashMap<>();
+        customerData.put("personalInfo", true);
+        customerData.put("contactDetails", true);
+        customerData.put("accountInfo", roles.stream().anyMatch(role -> 
+            role.contains("senior") || role.contains("supervisor") || role.contains("manager")));
+        
+        dataAccess.put("customerData", customerData);
+        dataAccess.put("interactionHistory", Map.of("full", 
+            roles.stream().anyMatch(role -> role.contains("supervisor") || role.contains("manager"))));
+        
+        layout.put("dataAccess", dataAccess);
+        
+        // Define effective permissions
+        Map<String, Object> permissions = new HashMap<>();
+        permissions.put("data.customer.read", "granted");
+        permissions.put("ui.customer_column.view", "granted");
+        permissions.put("ui.transcript_column.view", "granted");
+        permissions.put("ui.embedded_apps.view", canViewEmbedded ? "granted" : "denied");
+        
+        layout.put("effectivePermissions", permissions);
+        
         return layout;
     }
 }

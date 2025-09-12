@@ -1,0 +1,305 @@
+{
+  "layoutComputationScenarios": [
+    {
+      "scenarioName": "Senior Agent with Quality Assurance Access (Sarah Thompson)",
+      "request": {
+        "userId": "sarah.thompson",
+        "adGroups": [
+          "CN=Voice-SeniorAgent-EMEA-PROD,OU=Voice,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Business-Agent-EMEA-PROD,OU=Business,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Quality-Assurance-EMEA,OU=QA,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com"
+        ]
+      },
+      "expectedResponse": {
+        "userId": "sarah.thompson",
+        "layout": {
+          "defaultColumns": ["customer", "transcript", "embedded"],
+          "availableWidgets": ["sentiment_widget", "priority_widget", "quality_widget"],
+          "defaultActions": ["transfer", "escalate", "note", "quality_review"],
+          "settingsAccess": "advanced",
+          "defaultTheme": "emea_theme",
+          "dataRestrictions": {
+            "customerData": {
+              "personalInfo": true,
+              "contactDetails": true,
+              "accountInfo": true
+            },
+            "interactionHistory": {
+              "full": true
+            }
+          },
+          "visualCustomizations": {
+            "theme": "professional",
+            "density": "comfortable"
+          },
+          "effectivePermissions": {
+            "data.customer.read": "granted",
+            "ui.customer_column.view": "granted",
+            "ui.transcript_column.view": "granted",
+            "ui.embedded_apps.view": "granted",
+            "ui.quality_dashboard.view": "granted"
+          }
+        },
+        "theme": {
+          "primaryColor": "#1e3a8a",
+          "secondaryColor": "#059669"
+        },
+        "market": "EMEA",
+        "computationSource": "sapi"
+      }
+    },
+    {
+      "scenarioName": "Regional Manager with Full Access (Mark Johnson)",
+      "request": {
+        "userId": "mark.johnson",
+        "adGroups": [
+          "CN=ContactCenter-RegionalManager-US-PROD,OU=Management,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Voice-Manager-US-PROD,OU=Voice,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com"
+        ]
+      },
+      "expectedResponse": {
+        "userId": "mark.johnson",
+        "layout": {
+          "defaultColumns": ["customer", "transcript", "embedded", "analytics"],
+          "availableWidgets": ["sentiment_widget", "priority_widget", "team_performance_widget", "analytics_widget"],
+          "defaultActions": ["transfer", "escalate", "note", "team_assign", "performance_review"],
+          "settingsAccess": "full",
+          "defaultTheme": "us_theme",
+          "dataRestrictions": {
+            "customerData": {
+              "personalInfo": true,
+              "contactDetails": true,
+              "accountInfo": true,
+              "sensitiveData": true
+            },
+            "interactionHistory": {
+              "full": true,
+              "teamWide": true
+            }
+          },
+          "visualCustomizations": {
+            "theme": "executive",
+            "density": "compact"
+          },
+          "effectivePermissions": {
+            "data.customer.read": "granted",
+            "ui.customer_column.view": "granted",
+            "ui.transcript_column.view": "granted",
+            "ui.embedded_apps.view": "granted",
+            "ui.analytics_dashboard.view": "granted",
+            "ui.team_management.view": "granted",
+            "data.team_performance.read": "granted"
+          }
+        },
+        "theme": {
+          "primaryColor": "#059669",
+          "secondaryColor": "#1e3a8a"
+        },
+        "market": "US",
+        "computationSource": "sapi"
+      }
+    },
+    {
+      "scenarioName": "Basic Chat Agent (Emma Wilson)",
+      "request": {
+        "userId": "emma.wilson",
+        "adGroups": [
+          "CN=Chat-Agent-UK-PROD,OU=Chat,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com",
+          "CN=ContactCenter-Users-UK,OU=Users,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com"
+        ]
+      },
+      "expectedResponse": {
+        "userId": "emma.wilson",
+        "layout": {
+          "defaultColumns": ["customer", "transcript"],
+          "availableWidgets": ["sentiment_widget", "chat_tools_widget"],
+          "defaultActions": ["transfer", "note", "canned_response"],
+          "settingsAccess": "basic",
+          "defaultTheme": "uk_theme",
+          "dataRestrictions": {
+            "customerData": {
+              "personalInfo": true,
+              "contactDetails": true,
+              "accountInfo": false
+            },
+            "interactionHistory": {
+              "full": false,
+              "recent": true
+            }
+          },
+          "visualCustomizations": {
+            "theme": "standard",
+            "density": "comfortable"
+          },
+          "effectivePermissions": {
+            "data.customer.read": "granted",
+            "ui.customer_column.view": "granted",
+            "ui.transcript_column.view": "granted",
+            "ui.embedded_apps.view": "denied",
+            "ui.chat_tools.view": "granted"
+          }
+        },
+        "theme": {
+          "primaryColor": "#dc2626",
+          "secondaryColor": "#7c3aed"
+        },
+        "market": "UK",
+        "computationSource": "sapi"
+      }
+    },
+    {
+      "scenarioName": "Fraud Specialist with Security Access (Priya Shah)",
+      "request": {
+        "userId": "priya.shah",
+        "adGroups": [
+          "CN=Security-FraudSpecialist-APAC-PROD,OU=Security,OU=Banking,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Digital-Agent-APAC-PROD,OU=Digital,OU=Banking,OU=HSBC,DC=hsbc,DC=com"
+        ]
+      },
+      "expectedResponse": {
+        "userId": "priya.shah",
+        "layout": {
+          "defaultColumns": ["customer", "transcript", "embedded", "security"],
+          "availableWidgets": ["sentiment_widget", "fraud_detection_widget", "risk_assessment_widget"],
+          "defaultActions": ["transfer", "escalate", "note", "flag_suspicious", "security_review"],
+          "settingsAccess": "security",
+          "defaultTheme": "apac_theme",
+          "dataRestrictions": {
+            "customerData": {
+              "personalInfo": true,
+              "contactDetails": true,
+              "accountInfo": true,
+              "transactionHistory": true,
+              "riskProfile": true
+            },
+            "interactionHistory": {
+              "full": true,
+              "crossChannel": true
+            }
+          },
+          "visualCustomizations": {
+            "theme": "security",
+            "density": "detailed"
+          },
+          "effectivePermissions": {
+            "data.customer.read": "granted",
+            "ui.customer_column.view": "granted",
+            "ui.transcript_column.view": "granted",
+            "ui.embedded_apps.view": "granted",
+            "ui.fraud_detection.view": "granted",
+            "data.transaction_history.read": "granted",
+            "data.risk_profile.read": "granted"
+          }
+        },
+        "theme": {
+          "primaryColor": "#7c3aed",
+          "secondaryColor": "#dc2626"
+        },
+        "market": "APAC",
+        "computationSource": "sapi"
+      }
+    },
+    {
+      "scenarioName": "Wealth Management Agent (David Chen)",
+      "request": {
+        "userId": "david.chen",
+        "adGroups": [
+          "CN=Premier-Agent-APAC-PROD,OU=Premier,OU=Banking,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Wealth-Agent-APAC-PROD,OU=Wealth,OU=Banking,OU=HSBC,DC=hsbc,DC=com",
+          "CN=Voice-Agent-APAC-PROD,OU=Voice,OU=ContactCenter,OU=HSBC,DC=hsbc,DC=com"
+        ]
+      },
+      "expectedResponse": {
+        "userId": "david.chen",
+        "layout": {
+          "defaultColumns": ["customer", "transcript", "embedded", "wealth"],
+          "availableWidgets": ["sentiment_widget", "portfolio_widget", "market_data_widget"],
+          "defaultActions": ["transfer", "escalate", "note", "investment_review", "portfolio_analysis"],
+          "settingsAccess": "premium",
+          "defaultTheme": "apac_wealth_theme",
+          "dataRestrictions": {
+            "customerData": {
+              "personalInfo": true,
+              "contactDetails": true,
+              "accountInfo": true,
+              "portfolioData": true,
+              "investmentHistory": true
+            },
+            "interactionHistory": {
+              "full": true,
+              "wealthServices": true
+            }
+          },
+          "visualCustomizations": {
+            "theme": "wealth",
+            "density": "comprehensive"
+          },
+          "effectivePermissions": {
+            "data.customer.read": "granted",
+            "ui.customer_column.view": "granted",
+            "ui.transcript_column.view": "granted",
+            "ui.embedded_apps.view": "granted",
+            "ui.wealth_dashboard.view": "granted",
+            "data.portfolio_data.read": "granted",
+            "data.market_data.read": "granted"
+          }
+        },
+        "theme": {
+          "primaryColor": "#7c3aed",
+          "secondaryColor": "#dc2626"
+        },
+        "market": "APAC",
+        "computationSource": "sapi"
+      }
+    }
+  ],
+  "roleTemplateData": {
+    "voice_agent": {
+      "defaultColumns": ["customer", "transcript"],
+      "availableWidgets": ["sentiment_widget"],
+      "defaultActions": ["transfer", "note"],
+      "settingsAccess": "basic",
+      "dataPermissions": {
+        "personalInfo": true,
+        "contactDetails": true,
+        "accountInfo": false
+      }
+    },
+    "senior_agent": {
+      "defaultColumns": ["customer", "transcript", "embedded"],
+      "availableWidgets": ["sentiment_widget", "priority_widget"],
+      "defaultActions": ["transfer", "escalate", "note"],
+      "settingsAccess": "intermediate",
+      "dataPermissions": {
+        "personalInfo": true,
+        "contactDetails": true,
+        "accountInfo": true
+      }
+    },
+    "manager": {
+      "defaultColumns": ["customer", "transcript", "embedded", "analytics"],
+      "availableWidgets": ["sentiment_widget", "priority_widget", "team_performance_widget"],
+      "defaultActions": ["transfer", "escalate", "note", "team_assign"],
+      "settingsAccess": "advanced",
+      "dataPermissions": {
+        "personalInfo": true,
+        "contactDetails": true,
+        "accountInfo": true,
+        "teamData": true
+      }
+    },
+    "fraud_specialist": {
+      "defaultColumns": ["customer", "transcript", "embedded", "security"],
+      "availableWidgets": ["sentiment_widget", "fraud_detection_widget"],
+      "defaultActions": ["transfer", "escalate", "note", "flag_suspicious"],
+      "settingsAccess": "security",
+      "dataPermissions": {
+        "personalInfo": true,
+        "contactDetails": true,
+        "accountInfo": true,
+        "transactionHistory": true,
+        "riskProfile": true
+      }
+    }
+  }
+}

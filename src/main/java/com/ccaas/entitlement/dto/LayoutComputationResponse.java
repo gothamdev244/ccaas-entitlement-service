@@ -6,7 +6,6 @@ import java.util.Map;
 public class LayoutComputationResponse {
     private String userId;
     private Map<String, Object> layout;
-    private Map<String, Object> theme;
     private String market;
     private String computationSource;
     private long computationTimeMs;
@@ -30,13 +29,6 @@ public class LayoutComputationResponse {
         this.layout = layout;
     }
 
-    public Map<String, Object> getTheme() {
-        return theme;
-    }
-
-    public void setTheme(Map<String, Object> theme) {
-        this.theme = theme;
-    }
 
     public String getMarket() {
         return market;
